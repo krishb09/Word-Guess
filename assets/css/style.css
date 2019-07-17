@@ -1,0 +1,17 @@
+body{
+ background: url("../images/world.jpg");
+ text-align: center; 
+}
+
+h1{
+    color: blue; 
+}
+
+
+  #container{
+    background: #f5c542; 
+    border-radius: 60px / 60px;
+    /* width: 300px; */
+   
+
+  }
