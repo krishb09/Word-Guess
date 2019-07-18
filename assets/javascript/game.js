@@ -16,6 +16,7 @@ var fillBlank = document.getElementById("fillBlank");
 var allGuesses = []; 
 var guessesLeft = 12; 
 var guessedArr = []; 
+var appGuess = ""; 
 var appGuess = words[Math.floor(Math.random() * words.length)];//gets a random word
 for(var i=0; i<appGuess.length; i++){
     guessedArr.push('_'); 
@@ -25,6 +26,8 @@ for(var i=0; i<appGuess.length; i++){
 document.onkeyup = function(event) {
     userGuess = event.key.toUpperCase(); 
 
+
+    // allGuesses.push(userGuess); 
     for(let j=0; j<appGuess.length; j++){
             if(appGuess[j] === userGuess){
                 console.log(userGuess); 
@@ -44,14 +47,30 @@ document.onkeyup = function(event) {
     allGuesses.push(userGuess); 
 
 
+
+    function reset(){
+        guessesLeft = 12; 
+        guessedArr = []; 
+        allGuesses = []; 
+        appGuess = words[Math.floor(Math.random() * words.length)];
+        for(var i=0; i<appGuess.length; i++){
+            guessedArr.push('_'); 
+        }
+    }
+
+
     
     if(guessedArr.indexOf('_') === -1){ //if no more dashes left then user guesses word correctly 
         wins++; 
+        reset(); 
     
+    
+
     }else if(guessesLeft === 0) { //sees if there's no guesses left
         alert("You lost!"); 
-        guessesLeft = 12;  
+        // guessesLeft = 12;  
         guessesMade.textContent= "Your Guesses so far: " + " "; 
+        reset(); 
     }else{
         guessesLeft--; //this keeps track of guesses
 
